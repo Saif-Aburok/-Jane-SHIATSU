@@ -1,0 +1,566 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+<title>Jane Morrell | Zen Shiatsu</title>
+<link href="https://fonts.googleapis.com/css2?family=Cairo:wght@400;600;700&family=Lora:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+<style>
+:root{
+    --deep:#0f2a3a; --primary:#1a4a5c; --teal:#2f8f8b;
+    --warm:#c99a6b; --warm-light:#e8c9a5;
+    --sand:#f6efe3; --cream:#fffdf9;
+    --text:#1b2f3e; --text2:#33495a;
+    --ease:cubic-bezier(.22,1,.36,1);
+}
+*{margin:0;padding:0;box-sizing:border-box;-webkit-tap-highlight-color:transparent}
+html{scroll-behavior:smooth}
+body{
+    font-family:'Lora',serif;
+    background-color:var(--cream);
+    background-image:
+        radial-gradient(circle at 10% 15%, rgba(47,143,139,.06) 0%, transparent 40%),
+        radial-gradient(circle at 90% 85%, rgba(201,154,107,.08) 0%, transparent 40%);
+    background-attachment:fixed;
+    color:var(--text); overflow-x:hidden; min-height:100vh;
+}
+body::before{
+    content:''; position:fixed; inset:0; z-index:9999; pointer-events:none;
+    background-image:url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='0.03'/%3E%3C/svg%3E");
+}
+::-webkit-scrollbar{width:10px}
+::-webkit-scrollbar-track{background:var(--sand)}
+::-webkit-scrollbar-thumb{background:linear-gradient(var(--teal),var(--warm));border-radius:20px;border:2px solid var(--sand)}
+img{max-width:100%}
+h1,h2,h3{font-family:'Lora',serif;font-weight:800;color:var(--deep);letter-spacing:-.5px}
+p{line-height:1.9;font-size:clamp(1rem,1.1vw + .75rem,1.08rem);color:var(--text2);font-weight:400;overflow-wrap:break-word}
+a{text-decoration:none;transition:all .45s var(--ease)}
+
+/* ============ HERO ============ */
+.hero-header{
+    position:relative;min-height:100vh;min-height:100dvh;
+    display:flex;align-items:center;justify-content:center;
+    overflow:hidden;padding:clamp(56px,7vh,80px) clamp(18px,4vw,40px);isolation:isolate;
+}
+.hero-header::before{
+    content:'';
+    position:absolute;
+    inset:0;
+    z-index:-3;
+    background-color:var(--cream);
+    background-image:url('https://i.postimg.cc/jddCfNwK/Whats-App-Image-2026-08-26-at-4-17-03-PM.jpg');
+    background-position:center;
+    background-size:cover;
+    background-repeat:no-repeat;
+    opacity:1;
+    filter:none;
+}
+.hero-header::after{
+    content:'';
+    position:absolute;
+    inset:0;
+    z-index:-2;
+    background:linear-gradient(
+        180deg,
+        rgba(255,253,249,.10) 0%,
+        rgba(255,253,249,.03) 40%,
+        rgba(246,239,227,.28) 100%
+    );
+}
+.glow-aura{
+    position:absolute;top:45%;left:50%;width:min(900px,120vw);height:700px;transform:translate(-50%,-50%);
+    background:radial-gradient(ellipse at center,rgba(47,143,139,.12) 0%,rgba(201,154,107,.08) 35%,transparent 70%);
+    filter:blur(40px);border-radius:50%;z-index:-1;
+}
+.petal{
+    position:absolute;top:-30px;border-radius:70% 0 70% 0;opacity:0;z-index:-1;
+    background:linear-gradient(135deg,rgba(232,201,165,.9),rgba(201,154,107,.7));
+    animation:petalFall linear infinite;
+}
+@keyframes petalFall{
+    0%{transform:translate(0,-30px) rotate(0deg);opacity:0}
+    12%{opacity:.5}
+    85%{opacity:.4}
+    100%{transform:translate(60px,96vh) rotate(340deg);opacity:0}
+}
+.hero-inner{
+    max-width:1200px;margin:0 auto;width:100%;
+    display:grid;grid-template-columns:1fr;
+    gap:clamp(40px,5vw,70px);align-items:center;justify-items:center;
+    text-align:center;
+    animation:fadeUp 1.2s var(--ease);
+}
+@keyframes fadeUp{from{opacity:0;transform:translateY(35px)}to{opacity:1;transform:translateY(0)}}
+.hero-content{text-align:center}
+.hero-title{
+    font-size:clamp(2.5rem,6.5vw,5.2rem);
+    
+    line-height:.98;
+    text-shadow:0 2px 20px rgba(255,253,249,.9);
+    color:#850404; 
+     
+}
+.hero-subtitle{
+    font-family:'Cairo',sans-serif;font-size:clamp(.95rem,2.2vw,1.4rem);color:#850404;
+    letter-spacing:clamp(4px,1vw,7px);font-weight:700;margin:18px 0 0;display:inline-block;
+    text-shadow:0 1px 10px rgba(255,253,249,.95);
+}
+.hero-subtitle::before{content:'—';margin-right:14px;color:var(--warm);font-weight:300}
+
+.scroll-hint{
+    position:absolute;bottom:32px;left:50%;transform:translateX(-50%);
+    color:var(--teal);font-size:1.4rem;animation:bob 2.4s ease-in-out infinite;z-index:2;
+}
+@keyframes bob{0%,100%{transform:translateX(-50%) translateY(0)}50%{transform:translateX(-50%) translateY(9px)}}
+
+/* ============ MAIN ============ */
+.main-container{max-width:1280px;margin:0 auto;padding:0 clamp(16px,2.5vw,24px);position:relative;z-index:1}
+.grid-section,.full-width-section,.contact-box-section{margin:clamp(64px,9vw,110px) 0}
+.grid-section{opacity:0;transform:translateY(28px);transition:opacity 1s var(--ease),transform 1s var(--ease)}
+.grid-section.visible{opacity:1;transform:translateY(0)}
+.grid-wrapper{display:grid;grid-template-columns:1.05fr .95fr;gap:clamp(36px,5vw,70px);align-items:stretch}
+.grid-item{display:flex;flex-direction:column}
+.image-item{display:flex}
+
+.photo-frame{
+    flex:1;display:flex;padding:10px;
+    background:linear-gradient(135deg,#fff 0%,var(--sand) 100%);
+    border:1px solid rgba(47,143,139,.18);
+    border-radius:20px;
+    box-shadow:0 25px 70px rgba(15,42,58,.12),0 5px 15px rgba(47,143,139,.08);
+    overflow:hidden;position:relative;
+    transition:transform .6s var(--ease),box-shadow .6s var(--ease);
+}
+.photo-frame:hover{transform:translateY(-5px);box-shadow:0 32px 85px rgba(15,42,58,.16)}
+.photo-frame img{
+    display:block;width:100%;flex:1;min-height:0;height:100%;
+    object-fit:contain;border-radius:12px;
+}
+
+/* جعل صورة Jane أصغر قليلاً فقط */
+.jane-photo{
+    transform:scale(.88);
+    transform-origin:center;
+}
+
+/* ============ CARDS ============ */
+.glass-card{
+    background:linear-gradient(135deg,rgba(255,255,255,.94) 0%,rgba(255,253,249,.9) 100%);
+    backdrop-filter:blur(18px);border:1px solid rgba(47,143,139,.16);
+    border-radius:22px;padding:clamp(34px,4.5vw,48px) clamp(22px,3.8vw,42px);
+    box-shadow:0 12px 40px rgba(15,42,58,.06);position:relative;overflow:hidden;
+    transition:transform .6s var(--ease),box-shadow .6s var(--ease);
+    display:flex;flex-direction:column;justify-content:center;
+}
+.glass-card:hover{transform:translateY(-5px);box-shadow:0 22px 55px rgba(15,42,58,.1)}
+.glass-card::before{
+    content:'';position:absolute;top:0;left:0;right:0;height:4px;
+    background:linear-gradient(90deg,var(--teal),var(--warm));opacity:.85;
+}
+.glass-card::after{
+    content:'';position:absolute;bottom:14px;right:14px;width:42px;height:42px;
+    border-bottom:1.5px solid rgba(201,154,107,.4);border-right:1.5px solid rgba(201,154,107,.4);
+    border-radius:0 0 10px 0;
+}
+.card-header{margin-bottom:26px;padding-bottom:20px;border-bottom:1px solid rgba(47,143,139,.12)}
+.card-header .section-title{margin-bottom:0}
+.section-title{font-size:clamp(1.7rem,4vw,2.7rem);line-height:1.1;margin-bottom:0}
+.content-text{color:#2c4354;font-weight:400;line-height:1.95}
+.card-body{display:flex;flex-direction:column;gap:18px}
+
+/* ============ FULL WIDTH ============ */
+.full-width-section{
+    padding:clamp(48px,7vw,80px) clamp(20px,4.5vw,44px);border-radius:clamp(20px,3vw,28px);
+    background:rgba(255,255,255,.80);backdrop-filter:blur(16px);
+    border:1px solid rgba(47,143,139,.12);box-shadow:0 20px 60px rgba(15,42,58,.06);
+    position:relative;overflow:hidden;opacity:0;transform:translateY(28px);
+    transition:opacity 1s var(--ease),transform 1s var(--ease);
+}
+.full-width-section.visible{opacity:1;transform:translateY(0)}
+.full-width-section::before{
+    content:'';position:absolute;inset:0;pointer-events:none;opacity:.9;
+    background-image:url("data:image/svg+xml,%3Csvg width='56' height='28' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none' stroke='%232f8f8b' stroke-opacity='0.05'%3E%3Ccircle cx='0' cy='28' r='28'/%3E%3Ccircle cx='28' cy='28' r='28'/%3E%3Ccircle cx='56' cy='28' r='28'/%3E%3Ccircle cx='0' cy='0' r='28'/%3E%3Ccircle cx='28' cy='0' r='28'/%3E%3Ccircle cx='56' cy='0' r='28'/%3E%3Ccircle cx='14' cy='14' r='28'/%3E%3Ccircle cx='42' cy='14' r='28'/%3E%3C/g%3E%3C/svg%3E");
+}
+.full-width-section::after{
+    content:'';position:absolute;bottom:16px;right:16px;width:46px;height:46px;
+    border-bottom:1.5px solid rgba(201,154,107,.35);border-right:1.5px solid rgba(201,154,107,.35);
+    border-radius:0 0 14px 0;
+}
+.section-content{max-width:1100px;margin:0 auto;position:relative}
+.section-content .section-title{text-align:center;margin-bottom:clamp(28px,4vw,44px)}
+
+.expectations-list{display:grid;gap:clamp(16px,2.5vw,22px)}
+.expectation-item{
+    display:flex;gap:22px;align-items:flex-start;padding:clamp(18px,3vw,26px) clamp(18px,3vw,30px);
+    background:linear-gradient(135deg,rgba(255,255,255,.92) 0%,rgba(246,239,227,.72) 100%);
+    border:1px solid rgba(47,143,139,.12);border-left:4px solid var(--teal);
+    border-radius:14px;transition:all .5s var(--ease);
+}
+.expectation-item:hover{transform:translateX(9px);border-left-color:var(--warm);box-shadow:0 12px 30px rgba(15,42,58,.08)}
+.bullet-icon{
+    width:38px;height:38px;flex-shrink:0;background:rgba(47,143,139,.12);color:var(--teal);
+    border-radius:50%;display:grid;place-items:center;font-size:.88rem;font-weight:700;
+    border:1px solid rgba(47,143,139,.15);
+}
+.expectation-text{font-size:1.02rem;color:#2c4354;font-weight:400}
+
+/* ============ BOOKING ============ */
+.intro-text{text-align:center;max-width:730px;margin:0 auto clamp(30px,4vw,45px);font-size:clamp(1rem,1.3vw,1.12rem);font-weight:400}
+.cta-button-wrapper{display:flex;justify-content:center}
+.cta-button{
+    position:relative;padding:clamp(18px,2.5vw,22px) clamp(40px,6vw,62px);border-radius:100px;
+    background:linear-gradient(135deg,var(--deep) 0%,var(--primary) 100%);
+    color:#fff;display:inline-flex;flex-direction:column;align-items:center;gap:6px;
+    box-shadow:0 15px 35px rgba(15,42,58,.25);overflow:hidden;isolation:isolate;
+    transition:transform .5s var(--ease),box-shadow .5s var(--ease);
+    touch-action:manipulation;
+}
+.cta-button::before{
+    content:'';position:absolute;inset:0;z-index:-1;opacity:0;transition:opacity .5s var(--ease);
+    background:linear-gradient(135deg,var(--teal) 0%,var(--warm) 100%);
+}
+.cta-button:hover{transform:translateY(-4px) scale(1.03);box-shadow:0 22px 50px rgba(15,42,58,.3)}
+.cta-button:hover::before{opacity:1}
+.cta-button:active{transform:scale(.98)}
+.button-text{font-size:clamp(1.05rem,1.6vw,1.2rem);font-weight:700;letter-spacing:.5px}
+.button-subtext{font-family:'Cairo',sans-serif;font-size:.72rem;letter-spacing:2px;text-transform:uppercase;opacity:.88;text-align:center}
+.pulse-ripple{
+    position:absolute;top:50%;left:50%;width:100%;height:100%;border-radius:100px;
+    background:rgba(255,255,255,.14);transform:translate(-50%,-50%) scale(.85);
+    animation:radar 2.6s ease-out infinite;pointer-events:none;
+}
+@keyframes radar{0%{transform:translate(-50%,-50%) scale(.85);opacity:.65}100%{transform:translate(-50%,-50%) scale(1.7);opacity:0}}
+
+/* ============ CONTACT BOX ============ */
+.contact-box{
+    max-width:920px;margin:0 auto;background:#fff;
+    border:1px solid rgba(47,143,139,.18);border-radius:24px;
+    padding:clamp(36px,5vw,52px) clamp(20px,4vw,40px);text-align:center;
+    box-shadow:0 20px 55px rgba(15,42,58,.08);position:relative;overflow:hidden;
+}
+.contact-box::before{
+    content:'';position:absolute;top:0;left:0;right:0;height:5px;
+    background:linear-gradient(90deg,var(--teal),var(--warm),var(--teal));
+}
+.contact-box::after{
+    content:'';position:absolute;inset:0;pointer-events:none;
+    background-image:url("data:image/svg+xml,%3Csvg width='56' height='28' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none' stroke='%23c99a6b' stroke-opacity='0.05'%3E%3Ccircle cx='0' cy='28' r='28'/%3E%3Ccircle cx='28' cy='28' r='28'/%3E%3Ccircle cx='56' cy='28' r='28'/%3E%3Ccircle cx='14' cy='14' r='28'/%3E%3Ccircle cx='42' cy='14' r='28'/%3E%3C/g%3E%3C/svg%3E");
+}
+.contact-box .section-title{font-size:clamp(1.6rem,3vw,2rem);margin-bottom:0;position:relative;z-index:1}
+.contact-rows{display:grid;grid-template-columns:repeat(3,1fr);margin-top:clamp(28px,4vw,38px);position:relative;z-index:1;align-items:start}
+.contact-row{padding:14px 18px;border-right:1px solid rgba(47,143,139,.14)}
+.contact-row:last-child{border-right:none}
+.contact-label{
+    font-family:'Cairo',sans-serif;font-size:.72rem;letter-spacing:2.5px;text-transform:uppercase;
+    color:var(--warm);font-weight:700;margin-bottom:10px;
+}
+.contact-value,.contact-value a{color:var(--deep);font-size:clamp(.92rem,1.2vw,1.02rem);font-weight:600;line-height:1.7;display:block}
+.contact-value a{padding:4px 0}
+.contact-value a:hover{color:var(--teal)}
+
+/* ============ فاصل ============ */
+.ornament-divider{display:flex;align-items:center;justify-content:center;gap:16px;margin:-42px auto 0;width:fit-content;position:relative;z-index:2}
+.ornament-divider span{width:clamp(50px,8vw,80px);height:1px;background:linear-gradient(90deg,transparent,rgba(47,143,139,.45))}
+.ornament-divider span:last-child{background:linear-gradient(90deg,rgba(47,143,139,.45),transparent)}
+
+/* ============ FOOTER ============ */
+.footer{
+    margin-top:clamp(60px,8vw,90px);padding:clamp(38px,5vw,50px) 20px;
+    background:linear-gradient(180deg,var(--sand) 0%,#efe3d0 100%);
+    border-top:1px solid rgba(47,143,139,.12);text-align:center;
+}
+.footer-note{
+    max-width:640px;margin:0 auto;font-family:'Lora',serif;font-style:italic;
+    font-size:clamp(1rem,1.6vw,1.15rem);line-height:1.85;color:var(--deep);
+}
+.footer-note::before{content:'✿';display:block;color:var(--warm);font-size:1rem;margin-bottom:12px;font-style:normal}
+.footer-rule{width:70px;height:1px;background:rgba(201,154,107,.5);margin:24px auto 18px}
+.footer-text{font-weight:600;color:var(--deep);font-size:.9rem}
+.footer-subtext{font-family:'Cairo',sans-serif;font-size:.72rem;letter-spacing:2px;text-transform:uppercase;color:var(--teal);margin-top:6px}
+
+/* ============================================================
+   ============ نظام التجاوب الشامل للأجهزة ============
+   ============================================================ */
+
+/* ===== أجهزة لوحية كبيرة / لابتوب صغير (≤1200px) ===== */
+@media (max-width:1200px){
+    .glow-aura{height:600px}
+}
+
+/* ===== أجهزة لوحية عامة — Portrait (≤1024px) ===== */
+@media (max-width:1024px){
+    .hero-header{min-height:auto;padding:70px clamp(20px,4vw,32px)}
+    .hero-inner{grid-template-columns:1fr;gap:44px;text-align:center}
+    .hero-content{text-align:center}
+    .hero-subtitle::before{margin-right:0;margin-left:14px}
+    .grid-wrapper{grid-template-columns:1fr;gap:34px}
+    .image-item{aspect-ratio:4/3;max-height:540px}
+    .contact-box{padding:44px 26px}
+}
+
+/* ===== أجهزة لوحية Landscape (عرض ≥860) ===== */
+@media (max-width:1024px) and (orientation:landscape) and (min-width:860px){
+    .hero-header{padding:48px 32px}
+    .hero-title{font-size:clamp(2.4rem,4.5vw,3.8rem)}
+}
+
+/* ===== iPad Air / iPad Pro 11 (≤900px) ===== */
+@media (max-width:900px){
+    .glass-card{padding:42px 30px}
+    .full-width-section{padding:58px 26px}
+    .image-item{aspect-ratio:4/3}
+    .contact-rows{grid-template-columns:1fr}
+    .contact-row{border-right:none;border-bottom:1px solid rgba(47,143,139,.14);padding:18px}
+    .contact-row:last-child{border-bottom:none}
+}
+
+/* ===== iPad Mini Portrait + موبايلات (≤768px) ===== */
+@media (max-width:768px){
+    .hero-header{padding:56px 20px}
+    .hero-inner{gap:38px}
+    .glass-card{padding:38px 24px}
+    .glass-card::after{width:32px;height:32px;bottom:12px;right:12px}
+    .full-width-section{padding:50px 22px}
+    .full-width-section::after{width:36px;height:36px}
+    .expectation-item{padding:22px 22px;gap:16px}
+    .bullet-icon{width:34px;height:34px}
+    .scroll-hint{display:none}
+    .ornament-divider{margin-top:-36px}
+    .jane-photo{transform:scale(.90)}
+}
+
+/* ===== موبايلات كبيرة (≤640px) ===== */
+@media (max-width:640px){
+    .image-item{aspect-ratio:1/1;max-height:480px}
+    .content-text{font-size:1.02rem}
+    .intro-text{padding:0 4px}
+    .cta-button{width:min(100%,360px);justify-content:center}
+    .cta-button-wrapper{padding:0 6px}
+    .expectations-list{gap:14px}
+    .expectation-item{padding:20px 18px}
+    .expectation-text{font-size:.98rem}
+    .jane-photo{transform:scale(.88)}
+}
+
+/* ===== موبايلات عادية (≤568px) ===== */
+@media (max-width:568px){
+    .hero-header{padding:48px 18px}
+    .hero-title{font-size:clamp(2.3rem,11vw,2.9rem)}
+    .hero-subtitle{letter-spacing:4px;margin:14px 0 0}
+    .contact-box{padding:36px 18px}
+    .ornament-divider span{width:44px}
+    .petal{display:none}
+    .jane-photo{transform:scale(.86)}
+}
+
+/* ===== موبايلات صغيرة (≤480px) ===== */
+@media (max-width:480px){
+    .hero-header{padding:44px 16px}
+    .glass-card{padding:32px 20px}
+    .card-header{margin-bottom:20px;padding-bottom:16px}
+    .full-width-section{padding:42px 16px;border-radius:18px}
+    .full-width-section::after{display:none}
+    .expectation-item{flex-direction:column;gap:12px}
+    .bullet-icon{width:32px;height:32px}
+    .image-item{aspect-ratio:5/4;max-height:420px}
+    .contact-row{padding:16px 8px}
+    .contact-label{font-size:.68rem;letter-spacing:2px}
+    .footer{padding:34px 16px}
+    .jane-photo{transform:scale(.84)}
+}
+
+/* ===== موبايلات صغيرة جداً (≤360px) ===== */
+@media (max-width:360px){
+    .hero-title{font-size:2.1rem}
+    p{font-size:.98rem}
+    .button-text{font-size:1rem}
+    .button-subtext{font-size:.65rem}
+    .section-title{font-size:1.55rem}
+    .image-item{aspect-ratio:4/3;max-height:360px}
+    .jane-photo{transform:scale(.82)}
+}
+
+/* ===== موبايلات Landscape (ارتفاع صغير + عرضي) ===== */
+@media (orientation:landscape) and (max-height:560px){
+    .hero-header{min-height:100dvh;padding:36px 24px}
+    .hero-title{font-size:clamp(2rem,7vh,3rem)}
+    .hero-subtitle{margin:10px 0 0;letter-spacing:4px}
+    .enso,.scroll-hint,.petal{display:none}
+}
+
+/* ===== أجهزة لمسية — تعطيل تأثيرات hover المزعجة ===== */
+@media (hover:none){
+    .glass-card:hover,
+    .photo-frame:hover{transform:none}
+    .expectation-item:hover{transform:none;border-left-color:var(--teal)}
+    .cta-button:hover{transform:none}
+}
+
+/* ===== حركة مخفّضة ===== */
+@media (prefers-reduced-motion:reduce){
+    *,*::before,*::after{animation-duration:.01ms!important;transition-duration:.01ms!important}
+    html{scroll-behavior:auto}
+    .grid-section,.full-width-section{opacity:1;transform:none}
+    
+}
+.hero-intro{
+    margin: clamp(20px, 2.8vw, 36px) auto 0;
+    max-width: min(620px, 84vw);
+    font-size: clamp(1.04rem, 1.8vw, 1.28rem);
+    line-height: 1.9;
+    color: var(--deep);
+    text-align: center;
+    font-weight: 400;
+    letter-spacing: -0.1px;
+    text-shadow: 0 2px 26px rgba(255,253,249,.98), 0 1px 12px rgba(255,253,249,.96);
+}
+</style>
+</head>
+<body>
+
+<header class="hero-header">
+    <div class="glow-aura"></div>
+    <span class="petal" style="left:8%;width:13px;height:13px;animation-duration:16s;animation-delay:0s"></span>
+    <span class="petal" style="left:20%;width:9px;height:9px;animation-duration:21s;animation-delay:4s"></span>
+    <span class="petal" style="left:35%;width:15px;height:15px;animation-duration:18s;animation-delay:8s"></span>
+    <span class="petal" style="left:55%;width:10px;height:10px;animation-duration:22s;animation-delay:2s"></span>
+    <span class="petal" style="left:70%;width:14px;height:14px;animation-duration:17s;animation-delay:10s"></span>
+    <span class="petal" style="left:85%;width:11px;height:11px;animation-duration:20s;animation-delay:6s"></span>
+    <span class="petal" style="left:93%;width:8px;height:8px;animation-duration:24s;animation-delay:12s"></span>
+
+    <div class="hero-inner">
+        <div class="hero-content">
+            <h1 class="hero-title">Jane Morrell</h1>
+            <p class="hero-subtitle">ZEN SHIATSU</p>
+        
+    <p class="hero-intro">A quiet space to breathe, restore, and come back to yourself.</p>
+</div>
+        </div>
+    </div>
+    <a href="#about" class="scroll-hint" aria-label="Scroll down">⌄</a>
+</header>
+
+<main class="main-container">
+
+    <!-- ABOUT SHIATSU -->
+    <section class="grid-section" id="about">
+        <div class="grid-wrapper">
+            <div class="grid-item image-item">
+                <div class="photo-frame">
+                    <img src="https://i.postimg.cc/ZKfCrNnC/Whats-App-Image-33.jpg" alt="Peaceful shiatsu treatment room" loading="lazy" decoding="async">
+                </div>
+            </div>
+            <div class="grid-item">
+                <div class="glass-card">
+                    <div class="card-header">
+                        <h2 class="section-title">About Shiatsu</h2>
+                    </div>
+                    <p class="content-text">Shiatsu is a form of traditional Japanese bodywork that promotes the body’s innate ability to correct energetic imbalances and heal itself. Shiatsu emerged from a blending of Chinese Medicine, acupuncture meridians, and traditional Japanese massage. Palm, finger, elbow and knee pressure are used, along with gentle stretches and rotations, to unblock stagnant ki (energy) in meridians that run throughout the body. Through stimulating acupressure points along the meridians, shiatsu encourages deep relaxation and balance. Shiatsu is helpful for treating muscle pain, chronic pain, respiratory issues, stress, insomnia, fatigue, headaches, and digestive issues.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <div class="ornament-divider" aria-hidden="true">
+        <span></span>
+        <svg width="24" height="24" viewBox="0 0 24 24"><g fill="#c99a6b" fill-opacity=".75"><ellipse cx="12" cy="5" rx="2.5" ry="4"/><ellipse cx="12" cy="19" rx="2.5" ry="4"/><ellipse cx="5" cy="12" rx="4" ry="2.5"/><ellipse cx="19" cy="12" rx="4" ry="2.5"/><ellipse cx="7" cy="7" rx="3.3" ry="2.1" transform="rotate(45 7 7)"/><ellipse cx="17" cy="7" rx="3.3" ry="2.1" transform="rotate(-45 17 7)"/><ellipse cx="7" cy="17" rx="3.3" ry="2.1" transform="rotate(-45 7 17)"/><ellipse cx="17" cy="17" rx="3.3" ry="2.1" transform="rotate(45 17 17)"/></g><circle cx="12" cy="12" r="2" fill="#2f8f8b"/></svg>
+        <span></span>
+    </div>
+
+    <!-- ABOUT ME -->
+    <section class="grid-section">
+        <div class="grid-wrapper">
+            <div class="grid-item">
+                <div class="glass-card">
+                    <div class="card-header">
+                        <h2 class="section-title">About Me</h2>
+                    </div>
+                    <div class="card-body">
+                        <p class="content-text">I began studying zen shiatsu with my teacher Shunji Morimoto of Wendell, MA in 2014. I have also studied with Karlo Berger of Providence, RI. I am a certified practitioner member of the American Organization for Bodywork Therapies of Asia (AOBTA). I continue to study alongside a group of practitioners who studied with Shunji, Moshi Moshi Shiatsu, a collective offering shiatsu at community events in Massachusetts and Rhode Island. From 2017-2018, I organized a weekly free clinic to offer accessible shiatsu to community members in Great Falls, MA. In addition to practicing shiatsu, I have taught middle school and high school students in a variety of roles since 2017, most recently teaching high school Special Education. I grew up on the unceded land of the Pocumtuc Nation in Amherst, MA, before relocating in 2024 to Providence, RI, on the traditional land of the Narragansett Nation.</p>
+                        <p class="content-text">My goal as a Shiatsu practitioner is to create a space where clients can allow their bodies and minds to feel their wholeness and innate ability to heal. Learning shiatsu from my teacher Shunji restored my faith in my ability to learn, grow, and change, and move beyond old beliefs I held about myself. I aspire to carry forward the same warmth, unconditional acceptance, and care that Shunji has offered to his students and clients throughout the last 40 years that he has been practicing.</p>
+                    </div>
+                </div>
+            </div>
+            <div class="grid-item image-item jane-photo">
+                <div class="photo-frame">
+                    <img src="https://i.postimg.cc/Dy5bBDjd/Whats-App-Image-22.jpg" alt="Jane Morrell" loading="lazy" decoding="async">
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- WHAT TO EXPECT -->
+    <section class="full-width-section">
+        <div class="section-content">
+            <h2 class="section-title">What to Expect</h2>
+            <div class="expectations-list">
+                <div class="expectation-item"><span class="bullet-icon">01</span><p class="expectation-text">There will be a brief intake at the beginning of the session so I can understand your needs and goals. If it is your first appointment, we will discuss your health intake form.</p></div>
+                <div class="expectation-item"><span class="bullet-icon">02</span><p class="expectation-text">Shiatsu sessions are clothed and performed on a futon mat. Please wear comfortable clothing that is easy to move and stretch in.</p></div>
+                <div class="expectation-item"><span class="bullet-icon">03</span><p class="expectation-text">Sessions include thumb, palm, elbow and knee pressure along meridians throughout the body, combined with gentle stretches and rotations.</p></div>
+            </div>
+        </div>
+    </section>
+
+    <!-- BOOK -->
+    <section class="full-width-section">
+        <div class="section-content">
+            <h2 class="section-title">Book a Shiatsu Treatment</h2>
+            <p class="intro-text">To see availability and schedule a shiatsu session online, please use the link below. If you are having trouble finding an available appointment that works with your schedule, or if cost is a barrier, please reach out to me directly through email or text.</p>
+            <div class="cta-button-wrapper">
+                <a href="https://janemorrellshiatsu.as.me/" target="_blank" class="cta-button">
+                    <span class="button-text">Book Online</span>
+                    <span class="button-subtext">See calendar with upcoming availability</span>
+                    <span class="pulse-ripple"></span>
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <!-- CONTACT BOX -->
+    <section class="contact-box-section">
+        <div class="contact-box">
+            <h2 class="section-title">Contact</h2>
+
+            <div class="contact-rows">
+                <div class="contact-row">
+                    <div class="contact-label">Phone / Text</div>
+                    <div class="contact-value">
+                        <a href="tel:+14135227770">+1 (413) 522-7770</a>
+                    </div>
+                </div>
+
+                <div class="contact-row">
+                    <div class="contact-label">Email</div>
+                    <div class="contact-value">
+                        <a href="mailto:jmorrell.shiatsu@gmail.com">jmorrell.shiatsu@gmail.com</a>
+                    </div>
+                </div>
+
+                <div class="contact-row">
+                    <div class="contact-label">Address</div>
+                    <div class="contact-value">
+                        Birdsong Traditional Medicine<br>
+                        Acupuncture and Wellness Clinic<br>
+                        148 Waterman St. Ground Level<br>
+                        Providence, RI 02908
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+</main>
+
+<footer class="footer">
+    <p class="footer-note">Thank you for visiting. May you find a moment of stillness today — and whenever you are ready, you are warmly welcome here.</p>
+    <div class="footer-rule"></div>
+    <p class="footer-text">© 2026 Jane Morrell | Zen Shiatsu Practitioner</p>
+    <p class="footer-subtext">Traditional Healing • Providence, RI</p>
+</footer>
+
+<script>
+const io=new IntersectionObserver(es=>es.forEach(e=>{if(e.isIntersecting)e.target.classList.add('visible')}),{threshold:.12});
+document.querySelectorAll('.grid-section,.full-width-section').forEach(el=>io.observe(el));
+</script>
+</body>
+</html>
