@@ -16,7 +16,7 @@
     /* ---------- حجم الصور على اللابتوب / الكمبيوتر ---------- */
     --room-laptop:510px;   /* صورة غرفة العلاج (قسم About Shiatsu) */
     --jane-laptop:700px;   /* صورة Jane (قسم About Me) */
-
+    --jane-height:940px; 
     /* ---------- حجم الصور على الجوال / التابلت الطولي ---------- */
     --room-mobile:150%;    /* 100% = بعرض الشاشة كاملة */
     --jane-mobile:100%;     /* 82% من عرض الشاشة */
@@ -25,7 +25,18 @@
     --hero-mobile-fit:cover;        /* cover = تملأ الشاشة مثل اللابتوب | contain = تظهر اللوحة كاملة بدون قص */
     --hero-mobile-position:center;  /* الجزء الظاهر من اللوحة: center / top / bottom / left / right */
 }
-
+/* ══ طول صورة Jane على اللابتوب ══ */
+@media (min-width:901px){
+    .jane-photo .photo-frame{
+        height:var(--jane-height);
+        display:flex;
+    }
+    .jane-photo .photo-frame img{
+        height:100%;
+        object-fit:cover;
+        object-position:center;
+    }
+}
 :root{
     --deep:#0f2a3a; --primary:#1a4a5c; --teal:#2f8f8b;
     --warm:#c99a6b; --warm-light:#e8c9a5;
