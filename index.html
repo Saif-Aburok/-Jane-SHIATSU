@@ -6,6 +6,26 @@
 <title>Jane Morrell | Zen Shiatsu</title>
 <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@400;600;700&family=Lora:wght@400;500;600;700;800&display=swap" rel="stylesheet">
 <style>
+/* ==========================================================
+   🎛️ لوحة التحكم — غيّري الأرقام هنا فقط
+   ========================================================== */
+:root{
+    /* رابط اللوحة الفنية (خلفية الواجهة الأولى) */
+    --artwork:url('https://i.postimg.cc/jddCfNwK/Whats-App-Image-2026-08-26-at-4-17-03-PM.jpg');
+
+    /* ---------- حجم الصور على اللابتوب / الكمبيوتر ---------- */
+    --room-laptop:510px;   /* صورة غرفة العلاج (قسم About Shiatsu) */
+    --jane-laptop:700px;   /* صورة Jane (قسم About Me) */
+
+    /* ---------- حجم الصور على الجوال / التابلت الطولي ---------- */
+    --room-mobile:130%;    /* 100% = بعرض الشاشة كاملة */
+    --jane-mobile:82%;     /* 82% من عرض الشاشة */
+
+    /* ---------- اللوحة الفنية على الجوال ---------- */
+    --hero-mobile-fit:cover;        /* cover = تملأ الشاشة مثل اللابتوب | contain = تظهر اللوحة كاملة بدون قص */
+    --hero-mobile-position:center;  /* الجزء الظاهر من اللوحة: center / top / bottom / left / right */
+}
+
 :root{
     --deep:#0f2a3a; --primary:#1a4a5c; --teal:#2f8f8b;
     --warm:#c99a6b; --warm-light:#e8c9a5;
@@ -46,15 +66,17 @@ a{text-decoration:none;transition:all .45s var(--ease)}
     content:'';
     position:absolute;
     inset:0;
-    z-index:-3;
+    z-index:-4;
     background-color:var(--cream);
-    background-image:url('https://i.postimg.cc/jddCfNwK/Whats-App-Image-2026-08-26-at-4-17-03-PM.jpg');
+    background-image:var(--artwork);
     background-position:center;
     background-size:cover;
     background-repeat:no-repeat;
     opacity:1;
     filter:none;
 }
+/* طبقة اللوحة الخاصة بالجوال — مخفية على اللابتوب */
+.hero-art{display:none}
 .hero-header::after{
     content:'';
     position:absolute;
@@ -94,11 +116,9 @@ a{text-decoration:none;transition:all .45s var(--ease)}
 .hero-content{text-align:center}
 .hero-title{
     font-size:clamp(2.5rem,6.5vw,5.2rem);
-    
     line-height:.98;
     text-shadow:0 2px 20px rgba(255,253,249,.9);
-    color:#850404; 
-     
+    color:#850404;
 }
 .hero-subtitle{
     font-family:'Cairo',sans-serif;font-size:clamp(.95rem,2.2vw,1.4rem);color:#850404;
@@ -118,12 +138,16 @@ a{text-decoration:none;transition:all .45s var(--ease)}
 .grid-section,.full-width-section,.contact-box-section{margin:clamp(64px,9vw,110px) 0}
 .grid-section{opacity:0;transform:translateY(28px);transition:opacity 1s var(--ease),transform 1s var(--ease)}
 .grid-section.visible{opacity:1;transform:translateY(0)}
-.grid-wrapper{display:grid;grid-template-columns:1.05fr .95fr;gap:clamp(36px,5vw,70px);align-items:stretch}
+.grid-wrapper{display:grid;grid-template-columns:1.05fr .95fr;gap:clamp(36px,5vw,70px);align-items:center}
 .grid-item{display:flex;flex-direction:column}
-.image-item{display:flex}
+
+/* الصور: تظهر بحجمها الطبيعي بدون قص — والحجم من لوحة التحكم فوق */
+.image-item{display:flex;width:100%;justify-self:center}
+.room-photo{max-width:var(--room-laptop)}
+.jane-photo{max-width:var(--jane-laptop)}
 
 .photo-frame{
-    flex:1;display:flex;padding:10px;
+    display:block;padding:10px;
     background:linear-gradient(135deg,#fff 0%,var(--sand) 100%);
     border:1px solid rgba(47,143,139,.18);
     border-radius:20px;
@@ -132,16 +156,7 @@ a{text-decoration:none;transition:all .45s var(--ease)}
     transition:transform .6s var(--ease),box-shadow .6s var(--ease);
 }
 .photo-frame:hover{transform:translateY(-5px);box-shadow:0 32px 85px rgba(15,42,58,.16)}
-.photo-frame img{
-    display:block;width:100%;flex:1;min-height:0;height:100%;
-    object-fit:contain;border-radius:12px;
-}
-
-/* جعل صورة Jane أصغر قليلاً فقط */
-.jane-photo{
-    transform:scale(.88);
-    transform-origin:center;
-}
+.photo-frame img{display:block;width:100%;height:auto;border-radius:12px}
 
 /* ============ CARDS ============ */
 .glass-card{
@@ -282,33 +297,45 @@ a{text-decoration:none;transition:all .45s var(--ease)}
    ============ نظام التجاوب الشامل للأجهزة ============
    ============================================================ */
 
-/* ===== أجهزة لوحية كبيرة / لابتوب صغير (≤1200px) ===== */
+/* ===== لابتوب صغير (≤1200px) ===== */
 @media (max-width:1200px){
     .glow-aura{height:600px}
 }
 
-/* ===== أجهزة لوحية عامة — Portrait (≤1024px) ===== */
+/* ===== تابلت (≤1024px) — لسا عمودين مثل اللابتوب ===== */
 @media (max-width:1024px){
-    .hero-header{min-height:auto;padding:70px clamp(20px,4vw,32px)}
-    .hero-inner{grid-template-columns:1fr;gap:44px;text-align:center}
-    .hero-content{text-align:center}
-    .hero-subtitle::before{margin-right:0;margin-left:14px}
-    .grid-wrapper{grid-template-columns:1fr;gap:34px}
-    .image-item{aspect-ratio:4/3;max-height:540px}
+    .hero-header{padding:70px clamp(20px,4vw,32px)}
     .contact-box{padding:44px 26px}
 }
 
-/* ===== أجهزة لوحية Landscape (عرض ≥860) ===== */
+/* ===== تابلت Landscape (860–1024px) ===== */
 @media (max-width:1024px) and (orientation:landscape) and (min-width:860px){
     .hero-header{padding:48px 32px}
     .hero-title{font-size:clamp(2.4rem,4.5vw,3.8rem)}
 }
 
-/* ===== iPad Air / iPad Pro 11 (≤900px) ===== */
+/* ===== الجوال + التابلت الطولي (≤900px) — هنا فقط يتحوّل الموقع لعمود واحد ===== */
 @media (max-width:900px){
+    /* الواجهة الأولى: اللوحة بارتفاع الشاشة كاملة مثل اللابتوب */
+    .hero-header::before{filter:blur(22px) saturate(.95);transform:scale(1.12)}
+    .hero-art{
+        display:block;position:absolute;inset:0;z-index:-3;
+        background-image:var(--artwork);
+        background-size:var(--hero-mobile-fit);
+        background-position:var(--hero-mobile-position);
+        background-repeat:no-repeat;
+    }
+
+    /* الأقسام: الصورة فوق والكلام تحتها */
+    .grid-wrapper{grid-template-columns:1fr;gap:34px}
+    .jane-photo{order:-1}   /* صورة Jane فوق كلام About Me — احذفي هذا السطر إذا بدك الكلام فوق */
+
+    /* حجم الصور على الجوال (الأرقام من لوحة التحكم فوق) */
+    .room-photo{max-width:var(--room-mobile)}
+    .jane-photo{max-width:var(--jane-mobile)}
+
     .glass-card{padding:42px 30px}
     .full-width-section{padding:58px 26px}
-    .image-item{aspect-ratio:4/3}
     .contact-rows{grid-template-columns:1fr}
     .contact-row{border-right:none;border-bottom:1px solid rgba(47,143,139,.14);padding:18px}
     .contact-row:last-child{border-bottom:none}
@@ -317,7 +344,6 @@ a{text-decoration:none;transition:all .45s var(--ease)}
 /* ===== iPad Mini Portrait + موبايلات (≤768px) ===== */
 @media (max-width:768px){
     .hero-header{padding:56px 20px}
-    .hero-inner{gap:38px}
     .glass-card{padding:38px 24px}
     .glass-card::after{width:32px;height:32px;bottom:12px;right:12px}
     .full-width-section{padding:50px 22px}
@@ -326,12 +352,10 @@ a{text-decoration:none;transition:all .45s var(--ease)}
     .bullet-icon{width:34px;height:34px}
     .scroll-hint{display:none}
     .ornament-divider{margin-top:-36px}
-    .jane-photo{transform:scale(.90)}
 }
 
 /* ===== موبايلات كبيرة (≤640px) ===== */
 @media (max-width:640px){
-    .image-item{aspect-ratio:1/1;max-height:480px}
     .content-text{font-size:1.02rem}
     .intro-text{padding:0 4px}
     .cta-button{width:min(100%,360px);justify-content:center}
@@ -339,7 +363,6 @@ a{text-decoration:none;transition:all .45s var(--ease)}
     .expectations-list{gap:14px}
     .expectation-item{padding:20px 18px}
     .expectation-text{font-size:.98rem}
-    .jane-photo{transform:scale(.88)}
 }
 
 /* ===== موبايلات عادية (≤568px) ===== */
@@ -350,7 +373,6 @@ a{text-decoration:none;transition:all .45s var(--ease)}
     .contact-box{padding:36px 18px}
     .ornament-divider span{width:44px}
     .petal{display:none}
-    .jane-photo{transform:scale(.86)}
 }
 
 /* ===== موبايلات صغيرة (≤480px) ===== */
@@ -362,11 +384,9 @@ a{text-decoration:none;transition:all .45s var(--ease)}
     .full-width-section::after{display:none}
     .expectation-item{flex-direction:column;gap:12px}
     .bullet-icon{width:32px;height:32px}
-    .image-item{aspect-ratio:5/4;max-height:420px}
     .contact-row{padding:16px 8px}
     .contact-label{font-size:.68rem;letter-spacing:2px}
     .footer{padding:34px 16px}
-    .jane-photo{transform:scale(.84)}
 }
 
 /* ===== موبايلات صغيرة جداً (≤360px) ===== */
@@ -376,8 +396,6 @@ a{text-decoration:none;transition:all .45s var(--ease)}
     .button-text{font-size:1rem}
     .button-subtext{font-size:.65rem}
     .section-title{font-size:1.55rem}
-    .image-item{aspect-ratio:4/3;max-height:360px}
-    .jane-photo{transform:scale(.82)}
 }
 
 /* ===== موبايلات Landscape (ارتفاع صغير + عرضي) ===== */
@@ -385,7 +403,7 @@ a{text-decoration:none;transition:all .45s var(--ease)}
     .hero-header{min-height:100dvh;padding:36px 24px}
     .hero-title{font-size:clamp(2rem,7vh,3rem)}
     .hero-subtitle{margin:10px 0 0;letter-spacing:4px}
-    .enso,.scroll-hint,.petal{display:none}
+    .scroll-hint,.petal{display:none}
 }
 
 /* ===== أجهزة لمسية — تعطيل تأثيرات hover المزعجة ===== */
@@ -401,7 +419,6 @@ a{text-decoration:none;transition:all .45s var(--ease)}
     *,*::before,*::after{animation-duration:.01ms!important;transition-duration:.01ms!important}
     html{scroll-behavior:auto}
     .grid-section,.full-width-section{opacity:1;transform:none}
-    
 }
 .hero-intro{
     margin: clamp(20px, 2.8vw, 36px) auto 0;
@@ -419,6 +436,7 @@ a{text-decoration:none;transition:all .45s var(--ease)}
 <body>
 
 <header class="hero-header">
+    <div class="hero-art" aria-hidden="true"></div>
     <div class="glow-aura"></div>
     <span class="petal" style="left:8%;width:13px;height:13px;animation-duration:16s;animation-delay:0s"></span>
     <span class="petal" style="left:20%;width:9px;height:9px;animation-duration:21s;animation-delay:4s"></span>
@@ -432,8 +450,6 @@ a{text-decoration:none;transition:all .45s var(--ease)}
         <div class="hero-content">
             <h1 class="hero-title">Jane Morrell</h1>
             <p class="hero-subtitle">ZEN SHIATSU</p>
-        
-</div>
         </div>
     </div>
     <a href="#about" class="scroll-hint" aria-label="Scroll down">⌄</a>
@@ -444,7 +460,8 @@ a{text-decoration:none;transition:all .45s var(--ease)}
     <!-- ABOUT SHIATSU -->
     <section class="grid-section" id="about">
         <div class="grid-wrapper">
-            <div class="grid-item image-item">
+            <div class="grid-item image-item room-photo">
+                
                 <div class="photo-frame">
                     <img src="https://i.postimg.cc/ZKfCrNnC/Whats-App-Image-33.jpg" alt="Peaceful shiatsu treatment room" loading="lazy" decoding="async">
                 </div>
@@ -551,7 +568,7 @@ a{text-decoration:none;transition:all .45s var(--ease)}
 </main>
 
 <footer class="footer">
-    
+  
     <div class="footer-rule"></div>
     <p class="footer-text">© 2026 Jane Morrell | Zen Shiatsu Practitioner</p>
     <p class="footer-subtext">Traditional Healing • Providence, RI</p>
