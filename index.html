@@ -383,7 +383,7 @@ a{text-decoration:none;transition:all .45s var(--ease)}
     .hero-subtitle{letter-spacing:4px;margin:14px 0 0}
     .contact-box{padding:36px 18px}
     .ornament-divider span{width:44px}
-    .petal{display:none}
+    
 }
 
 /* ===== موبايلات صغيرة (≤480px) ===== */
@@ -414,9 +414,14 @@ a{text-decoration:none;transition:all .45s var(--ease)}
     .hero-header{min-height:100dvh;padding:36px 24px}
     .hero-title{font-size:clamp(2rem,7vh,3rem)}
     .hero-subtitle{margin:10px 0 0;letter-spacing:4px}
-    .scroll-hint,.petal{display:none}
+       .scroll-hint{display:none}
 }
-
+/* الزخارف على الجوال — أوضح وأكبر شوي */
+@media (max-width:568px){
+    .petal{
+        transform:scale(1.2);
+    }
+}
 /* ===== أجهزة لمسية — تعطيل تأثيرات hover المزعجة ===== */
 @media (hover:none){
     .glass-card:hover,
