@@ -19,7 +19,7 @@
     --jane-height:940px; 
     /* ---------- حجم الصور على الجوال / التابلت الطولي ---------- */
     --room-mobile:150%;    /* 100% = بعرض الشاشة كاملة */
-    --jane-mobile:100%;     /* 82% من عرض الشاشة */
+    --jane-mobile:82%;     /* 82% من عرض الشاشة */
 
     /* ---------- اللوحة الفنية على الجوال ---------- */
     --hero-mobile-fit:cover;        /* cover = تملأ الشاشة مثل اللابتوب | contain = تظهر اللوحة كاملة بدون قص */
@@ -132,10 +132,10 @@ a{text-decoration:none;transition:all .45s var(--ease)}
     font-size:clamp(2.5rem,6.5vw,5.2rem);
     line-height:.98;
     text-shadow:0 2px 20px rgba(255,253,249,.9);
-   color:#000000;
+        color:#000000;
 }
 .hero-subtitle{
-    font-family:'Cairo',sans-serif;font-size:clamp(.95rem,2.2vw,1.4rem); color:#000000;;
+    font-family:'Cairo',sans-serif;font-size:clamp(.95rem,2.2vw,1.4rem);  color:#000000;;
     letter-spacing:clamp(4px,1vw,7px);font-weight:700;margin:18px 0 0;display:inline-block;
     text-shadow:0 1px 10px rgba(255,253,249,.95);
 }
@@ -445,13 +445,14 @@ a{text-decoration:none;transition:all .45s var(--ease)}
     letter-spacing: -0.1px;
     text-shadow: 0 2px 26px rgba(255,253,249,.98), 0 1px 12px rgba(255,253,249,.96);
 }
-   /* 💻 إخفاء البتلات على اللابتوب فقط — الجوال بتظل فيه */
+/* 💻 إخفاء البتلات على اللابتوب فقط — الجوال بتظل فيه */
 @media (min-width:901px){
     .petal{display:none!important}
 }
-   /* ============ شريط المطوّر — منفصل أسفل الموقع ============ */
+/* ============ شريط المطوّر — منفصل أسفل الموقع ============ */
 .dev-credit{
-    background:var(--deep);
+    background:var(--primary);
+    
     color:#fff;text-align:center;
     padding:22px 20px 26px;
     border-top:3px solid var(--teal);
@@ -475,7 +476,55 @@ a{text-decoration:none;transition:all .45s var(--ease)}
 @media (max-width:568px){
     .dev-credit-links{flex-direction:column;gap:8px}
 }
-   .dev-credit{background:var(--sand);border-top:3px solid var(--teal)}
+/* ============================================================
+   ✿ Artwork by Lena Schmid — بطاقة أنيقة (الاسم + الزر بسطر واحد)
+   ============================================================ */
+.art-credit{
+    display:inline-flex;align-items:center;gap:16px;
+    padding:10px 12px 10px 10px;
+    background:linear-gradient(135deg,#fff 0%,var(--sand) 100%);
+    border:1px solid rgba(47,143,139,.18);border-radius:100px;
+    box-shadow:0 12px 32px rgba(15,42,58,.08);
+}
+.art-credit-thumb{
+    width:56px;height:56px;border-radius:50%;object-fit:cover;flex-shrink:0;
+    border:2px solid #fff;
+    box-shadow:0 0 0 1.5px var(--warm),0 6px 14px rgba(15,42,58,.15);
+}
+.art-credit-text{display:flex;flex-direction:column;align-items:flex-start;text-align:left;line-height:1.2;padding-right:4px}
+.art-credit-label{
+    font-family:'Cairo',sans-serif;font-size:.64rem;font-weight:700;
+    letter-spacing:2.5px;text-transform:uppercase;color:var(--warm);
+}
+.art-credit-name{
+    font-family:'Lora',serif;font-style:italic;font-weight:600;
+    font-size:1.22rem;color:var(--deep);margin-top:3px;white-space:nowrap;
+}
+.artwork-btn{
+    display:inline-flex;align-items:center;gap:7px;
+    padding:10px 20px;border-radius:100px;
+    background:var(--teal);border:1.5px solid var(--teal);
+    color:#fff;font-family:'Cairo',sans-serif;font-size:.8rem;font-weight:700;
+    letter-spacing:.8px;text-transform:none;white-space:nowrap;
+    box-shadow:0 10px 24px rgba(47,143,139,.25);
+    transition:all .4s var(--ease);
+}
+.artwork-btn span{color:#fff;font-size:.95rem}
+.artwork-btn:hover{background:#25807c;border-color:#25807c;color:#fff;transform:translateY(-2px);box-shadow:0 14px 28px rgba(47,143,139,.32)}
+.copyright-block{margin-top:24px;padding-top:20px;border-top:1px solid rgba(47,143,139,.14)}
+
+/* 📱 الجوال: الصورة والاسم بسطر، والزر تحتهم بعرض البطاقة */
+@media (max-width:568px){
+    .art-credit{
+        flex-wrap:wrap;justify-content:center;
+        width:100%;max-width:360px;
+        padding:16px 18px;border-radius:24px;gap:12px 14px;
+    }
+    .artwork-btn{flex-basis:100%;justify-content:center;width:auto;max-width:none}
+    
+}
+/* شريط المطوّر — نسخة فاتحة */
+.dev-credit{background:var(--sand);border-top:3px solid var(--teal)}
 .dev-credit-title{color:var(--text2)}
 .dev-credit-name{color:var(--deep)}
 .dev-credit-links a{color:var(--teal)}
@@ -618,7 +667,8 @@ a{text-decoration:none;transition:all .45s var(--ease)}
 </main>
 
 <footer class="footer">
-   <div class="footer-rule"></div>
+  
+    <div class="footer-rule"></div>
 
     <div class="art-credit">
         <img class="art-credit-thumb" src="https://i.postimg.cc/jddCfNwK/Whats-App-Image-2026-08-26-at-4-17-03-PM.jpg" alt="Artwork by Lena Schmid" loading="lazy" decoding="async">
@@ -637,13 +687,15 @@ a{text-decoration:none;transition:all .45s var(--ease)}
     </div>
 
 </footer>
+  
+
 
 <!-- ======= شريط المطوّر — منفصل أسفل الموقع ======= -->
 <div class="dev-credit">
     <p class="dev-credit-title">Website developed by</p>
     <p class="dev-credit-name">Saif Aburok</p>
     <div class="dev-credit-links">
-        <a href="tel:+972598337311"><span>Phone:</span> +972598337311</a>
+        <a href="tel:0598337311"><span>Phone:</span> 0598337311</a>
         <a href="mailto:seifrok6@gmail.com"><span>Email:</span> seifrok6@gmail.com</a>
     </div>
 </div>
