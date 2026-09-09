@@ -449,6 +449,32 @@ a{text-decoration:none;transition:all .45s var(--ease)}
 @media (min-width:901px){
     .petal{display:none!important}
 }
+   /* ============ شريط المطوّر — منفصل أسفل الموقع ============ */
+.dev-credit{
+    background:var(--deep);
+    color:#fff;text-align:center;
+    padding:22px 20px 26px;
+    border-top:3px solid var(--teal);
+}
+.dev-credit-title{
+    font-family:'Cairo',sans-serif;font-size:.72rem;letter-spacing:2.5px;text-transform:uppercase;
+    color:rgba(255,255,255,.6);line-height:1.6;
+}
+.dev-credit-name{
+    font-family:'Lora',serif;font-size:1.05rem;font-weight:700;color:#fff;
+    margin:4px 0 12px;line-height:1.4;
+}
+.dev-credit-links{display:flex;justify-content:center;flex-wrap:wrap;gap:10px 28px}
+.dev-credit-links a{
+    font-family:'Cairo',sans-serif;font-size:.9rem;font-weight:600;
+    color:var(--warm-light);letter-spacing:.3px;
+}
+.dev-credit-links a span{color:rgba(255,255,255,.55);font-weight:400}
+.dev-credit-links a:hover{color:#fff}
+/* على الجوال: الرقم والإيميل كل واحد بسطر */
+@media (max-width:568px){
+    .dev-credit-links{flex-direction:column;gap:8px}
+}
 </style>
 </head>
 <body>
@@ -586,10 +612,20 @@ a{text-decoration:none;transition:all .45s var(--ease)}
 </main>
 
 <footer class="footer">
-  
-    <div class="footer-rule"></div>
+  <div class="footer-rule"></div>
     <p class="footer-text">© 2026 Jane Morrell | Zen Shiatsu Practitioner</p>
     <p class="footer-subtext">Traditional Healing • Providence, RI</p>
+</footer>
+
+<!-- ======= شريط المطوّر — منفصل أسفل الموقع ======= -->
+<div class="dev-credit">
+    <p class="dev-credit-title">Website developed by</p>
+    <p class="dev-credit-name">Saif Aburok</p>
+    <div class="dev-credit-links">
+        <a href="tel:0598337311"><span>Phone:</span> 0598337311</a>
+        <a href="mailto:seifrok6@gmail.com"><span>Email:</span> seifrok6@gmail.com</a>
+    </div>
+</div>
 </footer>
 
 <script>
