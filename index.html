@@ -475,6 +475,12 @@ a{text-decoration:none;transition:all .45s var(--ease)}
 @media (max-width:568px){
     .dev-credit-links{flex-direction:column;gap:8px}
 }
+   .dev-credit{background:var(--sand);border-top:3px solid var(--teal)}
+.dev-credit-title{color:var(--text2)}
+.dev-credit-name{color:var(--deep)}
+.dev-credit-links a{color:var(--teal)}
+.dev-credit-links a span{color:var(--text2)}
+.dev-credit-links a:hover{color:var(--warm)}
 </style>
 </head>
 <body>
@@ -612,9 +618,24 @@ a{text-decoration:none;transition:all .45s var(--ease)}
 </main>
 
 <footer class="footer">
-  <div class="footer-rule"></div>
-    <p class="footer-text">© 2026 Jane Morrell | Zen Shiatsu Practitioner</p>
-    <p class="footer-subtext">Traditional Healing • Providence, RI</p>
+   <div class="footer-rule"></div>
+
+    <div class="art-credit">
+        <img class="art-credit-thumb" src="https://i.postimg.cc/jddCfNwK/Whats-App-Image-2026-08-26-at-4-17-03-PM.jpg" alt="Artwork by Lena Schmid" loading="lazy" decoding="async">
+        <div class="art-credit-text">
+            <span class="art-credit-label">Artwork by</span>
+            <span class="art-credit-name">Lena Schmid</span>
+        </div>
+        <a href="https://schmidlena.com" target="_blank" rel="noopener" class="artwork-btn">
+            <span>✿</span> schmidlena.com
+        </a>
+    </div>
+
+    <div class="copyright-block">
+        <p class="footer-text">© 2026 Jane Morrell | Zen Shiatsu Practitioner</p>
+        <p class="footer-subtext">Traditional Healing • Providence, RI</p>
+    </div>
+
 </footer>
 
 <!-- ======= شريط المطوّر — منفصل أسفل الموقع ======= -->
